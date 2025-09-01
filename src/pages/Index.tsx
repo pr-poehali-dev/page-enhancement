@@ -17,36 +17,99 @@ const Index = () => {
   const routes = [
     {
       id: "№50",
-      status: "В пути",
-      client: "ООО \"РУСАВТО\"",
-      cargo: "Автозапчасти",
-      from: "Москва",
-      to: "СПб",
-      driver: "Иванов А.",
-      progress: 65,
-      arrival: "14:30"
+      date: "01.09.2025 12:40",
+      orderType: "ЗАЯВКА",
+      orderNumber: "№671701",
+      orderDate: "01.09.2025",
+      client: "ЗАКАЗЧИК",
+      clientDetail: "УТЛ 1840",
+      clientCompany: "ООО \"ДОБРОЛЮБ\"",
+      contractor: "ПЕРЕВОЗЧИК", 
+      contractorDetail: "Авт-т:",
+      contractorCompany: "ИП Балабан Д.С.",
+      contractorInn: "263015788593",
+      driver: "ВОДИТЕЛЬ",
+      driverDetail: "ЗИЛ",
+      driverCompany: "Малков Дмитрий Николаевич",
+      driverPhone: "Е306АА126",
+      load: "ЭПЛ 624.82",
+      balance: "Баланс: 0",
+      payment: "Оплата по ссылке",
+      paymentDays: "3 дня",
+      paymentRemain: "Остаток 478 000",
+      limit: "Лимит: 500 000",
+      comment: "Заказчик:",
+      contractorComment: "Перевозчик:",
+      cargo: "ГРУЗ",
+      cargoDetail: "Без автотранспортного диспетчерского",
+      insurance: "Страховка: 48",
+      additional: "Доп. расходы:",
+      totalAmount: "115 562",
+      email: "test@email.ru"
     },
     {
-      id: "№49",
-      status: "Загрузка",
-      client: "ООО \"МегаЛогистик\"",
-      cargo: "Оборудование",
-      from: "Самара",
-      to: "Казань",
-      driver: "Петров В.",
-      progress: 15,
-      arrival: "16:45"
+      id: "№49", 
+      date: "01.09.2025 11:45",
+      orderType: "ЗАЯВКА",
+      orderNumber: "№671700",
+      orderDate: "01.09.2025",
+      client: "ЗАКАЗЧИК",
+      clientDetail: "УТЛ 1939",
+      clientCompany: "ООО \"МегаЛогистик\"",
+      contractor: "ПЕРЕВОЗЧИК",
+      contractorDetail: "Авт-т:",
+      contractorCompany: "ООО \"АЛЬЯНС-ТРЕЙД\"",
+      contractorInn: "580012170",
+      driver: "ВОДИТЕЛЬ",
+      driverDetail: "КамАЗ",
+      driverCompany: "Алексов Дмитрий Николаевич",
+      driverPhone: "Т386АА138",
+      load: "ЭПЛ 2000.20",
+      balance: "на выгрузке",
+      payment: "Оплата 3900 без НДС",
+      paymentDays: "1 день",
+      paymentRemain: "Остаток 647 000", 
+      limit: "Лимит: 500 000",
+      comment: "Заказчик:",
+      contractorComment: "Перевозчик:",
+      cargo: "ГРУЗ",
+      cargoDetail: "Промышленное оборудование",
+      insurance: "Страховка: 46",
+      additional: "Доп. расходы:",
+      totalAmount: "8 967 289 34 79",
+      email: "Alexsov@gmail.ru"
     },
     {
       id: "№48",
-      status: "Доставлен",
-      client: "ИП Сидоров",
-      cargo: "Мебель",
-      from: "Тула",
-      to: "Орел",
-      driver: "Козлов С.",
-      progress: 100,
-      arrival: "Завершен"
+      date: "07.09.2025",
+      orderType: "ЗАЯВКА", 
+      orderNumber: "№671699",
+      orderDate: "07.09.2025",
+      client: "ЗАКАЗЧИК",
+      clientDetail: "Счет Готов",
+      clientCompany: "ИП Сидоров",
+      contractor: "ПЕРЕВОЗЧИК",
+      contractorDetail: "для назначения",
+      contractorCompany: "21.05",
+      contractorInn: "",
+      driver: "ВОДИТЕЛЬ",
+      driverDetail: "Владимир",
+      driverCompany: "Горфаков Владимир Павлович",
+      driverPhone: "Т386АА138",
+      load: "0",
+      balance: "",
+      payment: "Проверка Дон./Заказчик",
+      paymentDays: "Проверка Дон./Перевозчик",
+      paymentRemain: "",
+      limit: "",
+      comment: "Заказчик:",
+      contractorComment: "Перевозчик:",
+      cargo: "",
+      cargoDetail: "",
+      insurance: "",
+      additional: "",
+      totalAmount: "",
+      email: "yuratest@mail.ru"
     }
   ];
 
@@ -58,7 +121,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background p-6">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[95%] mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
@@ -115,48 +178,85 @@ const Index = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="rounded-lg border">
+                <div className="rounded-lg border overflow-x-auto">
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead>ID</TableHead>
-                        <TableHead>Статус</TableHead>
-                        <TableHead>Клиент</TableHead>
-                        <TableHead>Груз</TableHead>
-                        <TableHead>Маршрут</TableHead>
-                        <TableHead>Водитель</TableHead>
-                        <TableHead>Прогресс</TableHead>
-                        <TableHead>Прибытие</TableHead>
+                        <TableHead className="w-16">ID</TableHead>
+                        <TableHead className="w-24">Дата</TableHead>
+                        <TableHead className="min-w-[200px]">Заказчик</TableHead>
+                        <TableHead className="min-w-[200px]">Перевозчик</TableHead>
+                        <TableHead className="min-w-[200px]">Водитель</TableHead>
+                        <TableHead className="w-24">Груз</TableHead>
+                        <TableHead className="w-32">Оплата</TableHead>
+                        <TableHead className="w-32">Почта</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {routes.map((route) => (
-                        <TableRow key={route.id}>
-                          <TableCell className="font-medium">{route.id}</TableCell>
-                          <TableCell>
-                            <Badge
-                              variant={route.status === "В пути" ? "default" : 
-                                      route.status === "Загрузка" ? "secondary" : "outline"}
-                              className={
-                                route.status === "В пути" ? "bg-primary text-white" :
-                                route.status === "Загрузка" ? "bg-yellow-100 text-yellow-800" :
-                                "bg-green-100 text-green-800"
-                              }
-                            >
-                              {route.status}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>{route.client}</TableCell>
-                          <TableCell>{route.cargo}</TableCell>
-                          <TableCell>{route.from} → {route.to}</TableCell>
-                          <TableCell>{route.driver}</TableCell>
-                          <TableCell>
+                        <TableRow key={route.id} className="hover:bg-muted/50">
+                          <TableCell className="font-medium">
                             <div className="flex items-center gap-2">
-                              <Progress value={route.progress} className="w-20" />
-                              <span className="text-sm text-muted-foreground">{route.progress}%</span>
+                              <input type="checkbox" className="w-4 h-4 accent-primary" />
+                              <span>{route.id}</span>
                             </div>
                           </TableCell>
-                          <TableCell>{route.arrival}</TableCell>
+                          <TableCell className="text-xs">
+                            <div className="space-y-1">
+                              <div>{route.date}</div>
+                              <Badge variant="outline" className="text-xs">{route.orderType}</Badge>
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <div className="space-y-1">
+                              <div className="text-sm font-medium text-blue-600">{route.client}</div>
+                              <div className="text-xs text-muted-foreground">{route.clientDetail}</div>
+                              <div className="text-xs">{route.clientCompany}</div>
+                              <div className="text-xs text-muted-foreground">{route.orderNumber}</div>
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <div className="space-y-1">
+                              <div className="text-sm font-medium text-red-600">{route.contractor}</div>
+                              <div className="text-xs text-muted-foreground">{route.contractorDetail}</div>
+                              <div className="text-xs">{route.contractorCompany}</div>
+                              <div className="text-xs text-muted-foreground">{route.contractorInn}</div>
+                              <div className="text-xs">{route.paymentRemain}</div>
+                              <div className="text-xs text-muted-foreground">{route.limit}</div>
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <div className="space-y-1">
+                              <div className="text-sm font-medium text-red-600">{route.driver}</div>
+                              <div className="text-xs text-muted-foreground">{route.driverDetail}</div>
+                              <div className="text-xs">{route.driverCompany}</div>
+                              <div className="text-xs text-muted-foreground">{route.driverPhone}</div>
+                              <div className="text-xs">{route.load}</div>
+                              <div className="text-xs text-muted-foreground">{route.balance}</div>
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <div className="space-y-1">
+                              <div className="text-sm font-medium text-green-600">{route.cargo}</div>
+                              <div className="text-xs">{route.cargoDetail}</div>
+                              <div className="text-xs text-muted-foreground">{route.insurance}</div>
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <div className="space-y-1">
+                              <div className="text-xs">{route.payment}</div>
+                              <div className="text-xs text-muted-foreground">{route.paymentDays}</div>
+                              <div className="text-xs">{route.comment}</div>
+                              <div className="text-xs text-muted-foreground">{route.contractorComment}</div>
+                              <div className="text-xs font-medium">{route.totalAmount}</div>
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <div className="text-xs">
+                              <Icon name="Mail" size={16} className="text-green-600 mb-1" />
+                              <div>{route.email}</div>
+                            </div>
+                          </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
